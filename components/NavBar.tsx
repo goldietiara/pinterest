@@ -60,8 +60,8 @@ const NavBar = () => {
         {session?.user ? (
           <Image
             src={`${session?.user?.image}`}
-            onClick={() => signOut()}
-            // onClick={() => router.push(`/${session?.user?.email}`)}
+            // onClick={() => signOut()}
+            onClick={() => router.push(`/${session?.user?.email}`)}
             alt="user-image"
             width={50}
             height={50}
