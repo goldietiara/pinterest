@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { BsPinterest } from "react-icons/bs";
 import { MdKeyboardArrowDown, MdNotifications } from "react-icons/md";
 import { AiFillMessage } from "react-icons/ai";
@@ -7,6 +7,8 @@ import { HiSearch } from "react-icons/hi";
 import { useRouter } from "next/navigation";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import app from "@/app/Shared/firebaseConfig";
 
 // belum responsif
 
@@ -14,6 +16,22 @@ const NavBar = () => {
   const { data: session } = useSession();
   console.log(session?.user?.email);
   const router = useRouter();
+  const db = getFirestore(app);
+
+  useEffect(() => {
+    saveUserInfo();
+  }, [session]);
+
+  const saveUserInfo = async () => {
+    if (session?.user) {
+      await setDoc(doc(db, "User", session?.user?.email!), {
+        username: session?.user?.name,
+        userEmail: session?.user?.email,
+        userImg: session?.user?.image,
+      });
+    }
+  };
+
   return (
     <nav className=" px-5 py-4 w-full flex justify-between">
       <div className="w-fit flex">
