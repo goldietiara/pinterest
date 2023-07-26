@@ -1,8 +1,9 @@
 "use client";
 import UserInfo from "@/components/UserInfo";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import app from "../Shared/firebaseConfig";
 import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import { userInfo } from "os";
 
 type params = {
   params: { userid: string };
@@ -10,6 +11,12 @@ type params = {
 
 const UserProfile = ({ params }: params) => {
   const db = getFirestore(app);
+  const [userInfo, setUserInfo] = useState<any>({
+    username: "",
+    userEmail: "",
+    userImg: "",
+  });
+
   useEffect(() => {
     console.log(params.userid.replace("%40", "@"));
     if (params) {
@@ -21,7 +28,8 @@ const UserProfile = ({ params }: params) => {
     const docRef = doc(db, "User", email);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      setUserInfo(docSnap.data());
+      console.log(docSnap.data());
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
@@ -30,7 +38,12 @@ const UserProfile = ({ params }: params) => {
 
   return (
     <div>
-      <UserInfo userInfo={""}></UserInfo>{" "}
+      <UserInfo
+        // userInfo={""}
+        userEmail={`${userInfo?.userEmail}`}
+        userImg={`${userInfo?.userImg}`}
+        username={`${userInfo?.username}`}
+      ></UserInfo>
     </div>
   );
 };
