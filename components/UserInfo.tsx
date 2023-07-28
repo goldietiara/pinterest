@@ -3,11 +3,12 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { FaCircle } from "react-icons/fa";
 
 type props = {
-  username?: string;
-  userEmail?: string;
-  userImg?: any;
+  username: string;
+  userEmail: string;
+  userImg: any;
 };
 
 function UserInfo({ username, userEmail, userImg }: props) {
@@ -28,7 +29,7 @@ function UserInfo({ username, userEmail, userImg }: props) {
     );
   }, []);
   return (
-    <div className="flex flex-col items-center mt-5 gap-2">
+    <div className="flex flex-col items-center mt-3 gap-1 ">
       <Image
         src={userImg}
         alt="userImage"
@@ -38,18 +39,19 @@ function UserInfo({ username, userEmail, userImg }: props) {
       />
       <h2 className="text-[30px] font-semibold mb-0">{username}</h2>
       <h2 className="text-gray-500 font-light text-sm">{userEmail}</h2>
-      <div className="flex text-base font-medium gap-5 ">
-        <h4>Followers {randomFollowers}</h4>
-        <h4>Following {randomFollowing}</h4>
+      <div className="flex text-base font-medium items-center">
+        <h4>{randomFollowers} Followers</h4>
+        <FaCircle className="text-lg p-2 mt-1" />
+        <h4>{randomFollowing} Following</h4>
       </div>
 
-      <div className="flex gap-4">
-        <button className="bg-gray-100 p-3 px-5 font-semibold mt-5 rounded-full hover:bg-gray-200">
+      <div className="flex gap-4 mt-2">
+        <button className="bg-gray-100 p-3 px-5 font-semibold rounded-full hover:bg-gray-200">
           Share
         </button>
         {session?.user?.email == userEmail ? (
           <button
-            className="bg-gray-100 p-3 px-5 font-semibold mt-5 rounded-full hover:bg-gray-200"
+            className="bg-gray-100 p-3 px-5 font-semibold rounded-full hover:bg-gray-200"
             onClick={() => onLogoutClick()}
           >
             Logout

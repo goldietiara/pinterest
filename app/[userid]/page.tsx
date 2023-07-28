@@ -1,51 +1,65 @@
-"use client";
 import UserInfo from "@/components/UserInfo";
-import React, { useEffect, useState } from "react";
 import app from "../Shared/firebaseConfig";
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
-import { userInfo } from "os";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import CreatedSaved from "@/components/CreatedSaved";
 
 type params = {
   params: { userid: string };
 };
 
-const UserProfile = ({ params }: params) => {
+const UserProfile = async ({ params }: params) => {
   const db = getFirestore(app);
-  const [userInfo, setUserInfo] = useState<any>({
-    username: "",
-    userEmail: "",
-    userImg: "",
-  });
 
-  useEffect(() => {
-    console.log(params.userid.replace("%40", "@"));
-    if (params) {
-      getUserInfo(params.userid.replace("%40", "@"));
-    }
-  }, [params]);
+  const docRef = doc(db, "User", params.userid.replace("%40", "@"));
+  const docSnap = await getDoc(docRef);
+  const userInfo = docSnap.data();
 
-  const getUserInfo = async (email: string) => {
-    const docRef = doc(db, "User", email);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      setUserInfo(docSnap.data());
-      console.log(docSnap.data());
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  };
+  console.log(userInfo);
+  console.log(userInfo?.userEmail);
 
   return (
     <div>
-      <UserInfo
-        // userInfo={""}
-        userEmail={`${userInfo?.userEmail}`}
-        userImg={`${userInfo?.userImg}`}
-        username={`${userInfo?.username}`}
-      ></UserInfo>
+      {userInfo !== undefined ? (
+        <UserInfo
+          userEmail={`${userInfo?.userEmail}`}
+          userImg={`${userInfo?.userImg}`}
+          username={`${userInfo?.username}`}
+        ></UserInfo>
+      ) : (
+        <h1 className="text-center text-6xl font-thin w-full py-52">
+          User not found!
+        </h1>
+      )}
+      <CreatedSaved />
     </div>
   );
 };
 
 export default UserProfile;
+
+// const [userInfo, setUserInfo] = useState<any>({
+//   username: "",
+//   userEmail: "",
+//   userImg: "",
+// });
+
+// useEffect(() => {
+//   console.log(params.userid.replace("%40", "@"));
+//   if (params) {
+// getUserInfo(params.userid.replace("%40", "@"));
+//   }
+// }, [params]);
+
+// const getUserInfo = async (email: string) => {
+//   const docRef = doc(db, "User", email);
+//   const docSnap = await getDoc(docRef);
+//   if (docSnap.exists()) {
+//     // setUserInfo(docSnap.data());
+//     const getUserInfos = docSnap.data();
+//     console.log(docSnap.data());
+//     console.log(getUserInfos);
+//     return getUserInfos;
+//   } else {
+//     console.log("No such document!");
+//   }
+// };
