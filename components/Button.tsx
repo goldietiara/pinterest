@@ -2,16 +2,16 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { RiLoader2Fill } from "react-icons/ri";
 
 type props = {
-  name: string;
+  name: string | React.JSX.Element;
   onClicktype?: string;
   route?: string;
   onClickFunction?: () => void;
   className?: string;
   leftIcon?: string;
   rightIcon?: string;
+  type?: "button" | "submit";
 };
 
 const Button = ({
@@ -20,6 +20,7 @@ const Button = ({
   route,
   className,
   onClickFunction,
+  type,
 }: props) => {
   // const [routes, setRoutes] = useState();
   const router = useRouter();
@@ -37,6 +38,7 @@ const Button = ({
           ? () => router.push(`${route}`)
           : () => onClickFunction
       }
+      type={type || "button"}
     >
       {name}{" "}
       {name === "Create" ? <MdKeyboardArrowDown className=" text-2xl " /> : ""}

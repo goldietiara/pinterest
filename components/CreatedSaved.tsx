@@ -7,7 +7,7 @@ function CreatedSaved() {
   const [option, setOption] = useState("saved");
 
   return (
-    <div className="flex justify-center items-center w-full h-full mt-12 gap-5 font-medium">
+    <div className="flex justify-center items-center w-full h-full mt-5 gap-5 font-medium">
       <button
         onClick={() => {
           setOption("created");
