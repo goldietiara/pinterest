@@ -2,7 +2,6 @@ import UserInfo from "@/components/UserInfo";
 import app from "../Shared/firebaseConfig";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import CreatedSaved from "@/components/CreatedSaved";
-import CreatedPinList from "@/components/pins/CreatedPinList";
 
 type params = {
   params: { userid: string };
@@ -31,8 +30,7 @@ const UserProfile = async ({ params }: params) => {
           User not found!
         </h1>
       )}
-      <CreatedSaved />
-      <CreatedPinList params={userInfo?.userEmail} />
+      <CreatedSaved params={userInfo?.userEmail} />
     </div>
   );
 };
