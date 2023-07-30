@@ -14,7 +14,7 @@ import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import app from "@/app/Shared/firebaseConfig";
 import Button from "./Button";
-import { GrClose } from "react-icons/Gr";
+import { GrClose } from "react-icons/gr";
 
 const Form = () => {
   const { data: session } = useSession();
