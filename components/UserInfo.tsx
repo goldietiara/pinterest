@@ -46,12 +46,12 @@ function UserInfo({ username, userEmail, userImg }: props) {
       </div>
 
       <div className="flex gap-4 mt-2">
-        <button className="bg-gray-100 p-3 px-5 font-semibold rounded-full hover:bg-gray-200">
+        <button className="bg-gray-100 p-3 px-5 font-semibold rounded-full hover:bg-gray-100">
           Share
         </button>
         {session?.user?.email == userEmail ? (
           <button
-            className="bg-gray-100 p-3 px-5 font-semibold rounded-full hover:bg-gray-200"
+            className="bg-gray-100 p-3 px-5 font-semibold rounded-full hover:bg-gray-100"
             onClick={() => onLogoutClick()}
           >
             Logout

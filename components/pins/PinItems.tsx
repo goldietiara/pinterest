@@ -34,7 +34,7 @@ const PinItems = ({ PinTypes }: props) => {
                 name={
                   <BiDotsHorizontalRounded className=" stroke-[1px] text-2xl absolute m-auto -translate-x-1/2 -translate-y-1/2" />
                 }
-                className=" bg-gray-200 rounded-full hover:bg-white py-5 px-5 relative"
+                className=" bg-gray-100 rounded-full hover:bg-white py-5 px-5 relative"
               />
               <Button
                 name={
@@ -47,9 +47,9 @@ const PinItems = ({ PinTypes }: props) => {
         ) : (
           <Button
             name={
-              <MdModeEdit className=" stroke-[1px] text-2xl absolute m-auto -translate-x-1/2 -translate-y-1/2" />
+              <MdModeEdit className=" text-2xl absolute m-auto -translate-x-1/2 -translate-y-1/2" />
             }
-            className=" bg-gray-200 rounded-full hover:bg-white py-5 px-5 relative opacity-90"
+            className=" bg-gray-100 rounded-full py-5 px-5 relative opacity-90 hover:opacity-100"
           />
         )}
       </div>

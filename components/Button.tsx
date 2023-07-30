@@ -31,7 +31,7 @@ const Button = ({
         className != null
           ? `font-semibold py-3 px-4 ${className}`
           : // jgn lupa nanti flexnya di hapus
-            `font-semibold py-3 px-4 rounded-full hover:bg-slate-200 flex`
+            `font-semibold py-3 px-4 rounded-full hover:bg-slate-100 flex`
       }
       onClick={
         onClicktype === "route"

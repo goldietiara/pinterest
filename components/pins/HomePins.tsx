@@ -13,8 +13,10 @@ import {
 } from "firebase/firestore";
 import app from "@/app/Shared/firebaseConfig";
 import UserTag from "../UserTag";
+import { useRouter } from "next/navigation";
 
 const HomePins = () => {
+  const router = useRouter();
   const db = getFirestore(app);
   const [userPins, setUserPins] = useState<
     QueryDocumentSnapshot<DocumentData>[]
@@ -50,7 +52,10 @@ const HomePins = () => {
                 key={i}
               >
                 <Image src={v.data().image} height={1000} width={1000} alt="" />
-                <div className=" group/edit opacity-0 hover:opacity-100 absolute w-full h-full">
+                <div
+                  className=" group/edit opacity-0 hover:opacity-100 absolute w-full h-full cursor-zoom-in"
+                  onClick={() => router.push(`/pin/${v.id}`)}
+                >
                   <PinItems PinTypes="created" />
                 </div>
               </div>

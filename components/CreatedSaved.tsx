@@ -58,7 +58,7 @@ const CreatedSaved = ({ params }: props) => {
           className={
             option === "created"
               ? "border-b-[3px] border-black py-1 px-2 "
-              : "py-1 px-2 hover:bg-gray-200 rounded-lg border-b-[3px] border-transparent"
+              : "py-1 px-2 hover:bg-gray-100 rounded-lg border-b-[3px] border-transparent"
           }
         >
           Created
@@ -70,7 +70,7 @@ const CreatedSaved = ({ params }: props) => {
           className={
             option === "saved"
               ? "border-b-[3px] border-black py-1 px-2 "
-              : "py-1 px-2 hover:bg-gray-200 rounded-lg border-b-[3px] border-transparent"
+              : "py-1 px-2 hover:bg-gray-100 rounded-lg border-b-[3px] border-transparent"
           }
         >
           Saved
