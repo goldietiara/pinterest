@@ -26,7 +26,7 @@ const Auth = () => {
     }
   };
   return (
-    <div>
+    <div className="shrink-0">
       {session?.user ? (
         <Image
           src={`${session?.user?.image}`}

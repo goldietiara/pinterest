@@ -32,10 +32,7 @@ const UserProfile = async ({ params }: params) => {
         </h1>
       )}
       <CreatedSaved />
-      <CreatedPinList
-        pinImg={`${userInfo?.userImg}`}
-        params={userInfo?.userEmail}
-      />
+      <CreatedPinList params={userInfo?.userEmail} />
     </div>
   );
 };

@@ -80,7 +80,7 @@ const Form = () => {
       </div>
       <div className="flex gap-10 ">
         <UploadImage onChange={uploadImg} selectedFiles={form.image} />
-        <div className="flex flex-col gap-5 h-[100%]">
+        <div className="flex flex-col gap-5 h-[100%] w-full">
           <input
             type="text"
             placeholder="Add your title"

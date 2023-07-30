@@ -8,7 +8,7 @@ import Button from "./Button";
 
 const NavBar = () => {
   return (
-    <nav className=" px-5 py-4 w-full flex justify-between">
+    <nav className=" px-5 py-4 w-full flex justify-between ">
       <div className="w-fit flex">
         {/* <Link href={"/"}>
           <BsPinterest className=" p-3 rounded-full text-red-600 text-5xl bg-white hover:bg-gray-100 cursor-pointer" />
@@ -17,7 +17,7 @@ const NavBar = () => {
           name={
             <BsPinterest className=" text-2xl text-red-600 absolute m-auto -translate-x-1/2 -translate-y-1/2" />
           }
-          className="rounded-full hover:bg-gray-100 px-6 relative"
+          className="rounded-full hover:bg-gray-100 px-6 relative shrink-0"
           onClicktype="route"
           route="/"
         />
@@ -40,13 +40,13 @@ const NavBar = () => {
           name={
             <MdNotifications className=" text-2xl absolute m-auto -translate-x-1/2 -translate-y-1/2" />
           }
-          className="rounded-full hover:bg-gray-100 px-6 relative"
+          className="rounded-full hover:bg-gray-100 px-6 relative shrink-0"
         />
         <Button
           name={
             <AiFillMessage className=" text-2xl absolute m-auto -translate-x-1/2 -translate-y-1/2" />
           }
-          className="rounded-full hover:bg-gray-100 px-6 relative"
+          className="rounded-full hover:bg-gray-100 px-6 relative shrink-0"
         />
         <Auth />
       </div>

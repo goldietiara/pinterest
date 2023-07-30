@@ -15,7 +15,7 @@ const UploadImage = ({ onChange, selectedFiles }: props) => {
       <div className="w-full h-full border-2 border-gray-300 border-dashed relative">
         {!selectedFiles ? (
           <div className="grid grid-cols-1 p-3 w-full h-full">
-            <p className=" place-self-end text-center flex flex-col items-center gap-2 text-sm">
+            <p className=" place-self-end w-full text-center flex flex-col items-center gap-2 text-sm">
               <FaArrowCircleUp className="text-xl " />
               Drag and drop or click to upload
             </p>

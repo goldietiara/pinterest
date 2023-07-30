@@ -21,10 +21,10 @@ export default function RootLayout({
       <body className={`flex flex-col ${inter.className}`}>
         <Provider>
           <div className=" relative  bg-white w-full h-full">
-            <div className=" sticky top-0 bg-white ">
+            <div className=" sticky top-0 bg-white z-10">
               <NavBar />
             </div>
-            {children}
+            <div className=" z-0">{children}</div>
           </div>
         </Provider>
       </body>

@@ -12,12 +12,9 @@ import {
   where,
 } from "firebase/firestore";
 import app from "@/app/Shared/firebaseConfig";
+import UserTag from "../UserTag";
 
-type props = {
-  params: string;
-};
-
-const CreatedPinList = ({ params }: props) => {
+const HomePins = () => {
   const db = getFirestore(app);
   const [userPins, setUserPins] = useState<
     QueryDocumentSnapshot<DocumentData>[]
@@ -32,10 +29,7 @@ const CreatedPinList = ({ params }: props) => {
   }, []);
 
   const getUserPins = async () => {
-    const q = query(
-      collection(db, "pinterest-post"),
-      where("email", "==", params)
-    );
+    const q = query(collection(db, "pinterest-post"));
     const docSnap = await getDocs(q);
     const result: QueryDocumentSnapshot<DocumentData>[] = [];
     docSnap.forEach((snapshot: any) => {
@@ -50,14 +44,22 @@ const CreatedPinList = ({ params }: props) => {
       <div className=" container mx-auto pb-10 columns-4xs w-full h-full">
         {userPins.map((v, i) => {
           return (
-            <div
-              className="w-[235px] h-fit flex rounded-3xl relative overflow-hidden mb-5"
-              key={i}
-            >
-              <Image src={v.data().image} height={1000} width={1000} alt="" />
-              <div className=" group/edit opacity-0 hover:opacity-100 absolute w-full h-full">
-                <PinItems />
+            <div className="mb-5">
+              <div
+                className="w-[235px] h-fit flex rounded-3xl relative overflow-hidden"
+                key={i}
+              >
+                <Image src={v.data().image} height={1000} width={1000} alt="" />
+                <div className=" group/edit opacity-0 hover:opacity-100 absolute w-full h-full">
+                  <PinItems />
+                </div>
               </div>
+              {v.data().userName ? (
+                <UserTag
+                  srcPath={v.data().userImage}
+                  username={v.data().userName}
+                />
+              ) : null}
             </div>
           );
         })}
@@ -66,4 +68,4 @@ const CreatedPinList = ({ params }: props) => {
   );
 };
 
-export default CreatedPinList;
+export default HomePins;
