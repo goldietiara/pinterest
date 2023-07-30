@@ -51,7 +51,7 @@ const HomePins = () => {
               >
                 <Image src={v.data().image} height={1000} width={1000} alt="" />
                 <div className=" group/edit opacity-0 hover:opacity-100 absolute w-full h-full">
-                  <PinItems />
+                  <PinItems PinTypes="created" />
                 </div>
               </div>
               {v.data().userName ? (
