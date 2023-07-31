@@ -32,8 +32,14 @@ const Form = async ({ params }: params) => {
           className=" rounded-full hover:bg-gray-100 py-5 px-5 relative shrink-0"
         />
       </div>
-      <div className="bg-white w-[65%] overflow-hidden rounded-3xl grid grid-cols-2 mb-5 gap-10 shadow-xl shadow-gray-100">
-        <Image src={`${pins?.image}`} height={1000} width={1000} alt="" />
+      <div className="bg-white w-[65%] overflow-hidden rounded-3xl grid grid-cols-2 mb-5 gap-10 shadow-lg shadow-gray-200">
+        <Image
+          src={`${pins?.image}`}
+          height={1000}
+          width={1000}
+          alt=""
+          className="rounded-3xl"
+        />
         <div className="flex flex-col gap-10 h-[100%] w-full p-5">
           <div className="flex flex-row justify-between">
             <div className=" flex">
